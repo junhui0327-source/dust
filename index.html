@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!-- 대기오염 정보 조회 웹앱 메인 HTML -->
+<html lang="ko">
+<head>
+  <!-- 문자 인코딩 및 반응형 뷰포트 설정 -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>실시간 대기오염 정보</title>
+
+  <!-- 외부 CSS 파일 연결 -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── 헤더 영역 ── -->
+  <header class="site-header">
+    <h1 class="site-title">🌬️ 실시간 대기오염 정보</h1>
+    <p class="site-sub">한국환경공단 에어코리아 제공</p>
+  </header>
+
+  <!-- ── 컨트롤 바: 시도 선택 드롭다운 ── -->
+  <section class="control-bar">
+    <label for="sidoSelect" class="sido-label">지역 선택</label>
+    <select id="sidoSelect" class="sido-select">
+      <!-- 전국 및 17개 시도 옵션 -->
+      <option value="전국">전국</option>
+      <option value="서울" selected>서울</option>
+      <option value="부산">부산</option>
+      <option value="대구">대구</option>
+      <option value="인천">인천</option>
+      <option value="광주">광주</option>
+      <option value="대전">대전</option>
+      <option value="울산">울산</option>
+      <option value="세종">세종</option>
+      <option value="경기">경기</option>
+      <option value="강원">강원</option>
+      <option value="충북">충북</option>
+      <option value="충남">충남</option>
+      <option value="전북">전북</option>
+      <option value="전남">전남</option>
+      <option value="경북">경북</option>
+      <option value="경남">경남</option>
+      <option value="제주">제주</option>
+    </select>
+  </section>
+
+  <!-- ── 지역 평균 요약 카드 ── -->
+  <section class="summary-section" id="summarySection">
+    <div class="summary-card">
+      <div class="summary-item">
+        <span class="summary-label">📍 선택 지역</span>
+        <span class="summary-value" id="summaryRegion">-</span>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-item">
+        <span class="summary-label">💨 평균 미세먼지 (PM10)</span>
+        <span class="summary-value summary-big" id="summaryPm10">-</span>
+        <span class="summary-unit">㎍/㎥</span>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-item">
+        <span class="summary-label">🌫️ 평균 초미세먼지 (PM2.5)</span>
+        <span class="summary-value summary-big" id="summaryPm25">-</span>
+        <span class="summary-unit">㎍/㎥</span>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-item">
+        <span class="summary-label">🕐 기준 시각</span>
+        <span class="summary-value" id="summaryTime">-</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 로딩 인디케이터 ── -->
+  <div class="loading-wrap" id="loadingWrap" hidden>
+    <div class="spinner"></div>
+    <p class="loading-text">데이터를 불러오는 중입니다…</p>
+  </div>
+
+  <!-- ── 에러 메시지 표시 영역 ── -->
+  <div class="error-box" id="errorBox" hidden>
+    <span id="errorMsg"></span>
+  </div>
+
+  <!-- ── 측정소 카드 목록 ── -->
+  <main class="card-grid" id="cardGrid">
+    <!-- JavaScript에서 카드를 동적으로 삽입 -->
+  </main>
+
+  <!-- ── 푸터 ── -->
+  <footer class="site-footer">
+    <p>
+      데이터 출처:
+      <a href="https://www.airkorea.or.kr" target="_blank" rel="noopener noreferrer">한국환경공단 에어코리아</a>
+      &nbsp;|&nbsp;
+      <a href="https://www.data.go.kr/data/15073861/openapi.do" target="_blank" rel="noopener noreferrer">공공데이터포털 오픈 API</a>
+    </p>
+    <p class="footer-sub">본 서비스는 공공데이터포털에서 제공하는 오픈 API를 활용하여 제작되었습니다.</p>
+  </footer>
+
+  <!-- 외부 JavaScript 파일 연결 (defer: DOM 파싱 완료 후 실행 보장) -->
+  <script src="app.js" defer></script>
+  
+</body>
+</html>
+

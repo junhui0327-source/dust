@@ -1,0 +1,12 @@
+{
+  "name": "dust",
+  "version": "1.0.0",
+  "description": "실시간 대기오염 정보 조회 웹앱",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

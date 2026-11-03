@@ -1,0 +1,405 @@
+/* ── 전역 CSS 변수 및 기본 리셋 ── */
+:root {
+  /* 등급별 카드 배경색 정의 */
+  --color-grade1-bg: #dbeafe;   /* 좋음: 하늘 파랑 */
+  --color-grade1-bd: #3b82f6;   /* 좋음: 테두리 파랑 */
+  --color-grade1-text: #1e3a8a;
+
+  --color-grade2-bg: #dcfce7;   /* 보통: 연초록 */
+  --color-grade2-bd: #22c55e;
+  --color-grade2-text: #14532d;
+
+  --color-grade3-bg: #ffedd5;   /* 나쁨: 연주황 */
+  --color-grade3-bd: #f97316;
+  --color-grade3-text: #7c2d12;
+
+  --color-grade4-bg: #fee2e2;   /* 매우나쁨: 연빨강 */
+  --color-grade4-bd: #ef4444;
+  --color-grade4-text: #7f1d1d;
+
+  --color-none-bg: #f3f4f6;     /* 등급 없음: 회색 */
+  --color-none-bd: #9ca3af;
+  --color-none-text: #374151;
+
+  /* 전체 레이아웃 색상 */
+  --bg-page: #f0f4f8;
+  --bg-header: #1e3a5f;
+  --bg-summary: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --radius: 12px;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* 기본 박스 사이징 및 여백 초기화 */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 페이지 전체 기본 스타일 */
+body {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 헤더 ── */
+.site-header {
+  background-color: var(--bg-header);
+  color: #ffffff;
+  text-align: center;
+  padding: 28px 16px 20px;
+}
+
+/* 사이트 제목 크기 */
+.site-title {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* 헤더 부제목 */
+.site-sub {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* ── 시도 선택 컨트롤 바 ── */
+.control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  flex-wrap: wrap;
+}
+
+/* 드롭다운 레이블 */
+.sido-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* 시도 선택 드롭다운 스타일 */
+.sido-select {
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: 2px solid #3b82f6;
+  border-radius: 8px;
+  background-color: #fff;
+  color: var(--text-primary);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%233b82f6' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 36px;
+  transition: border-color 0.2s;
+  min-width: 140px;
+}
+
+/* 드롭다운 포커스 효과 */
+.sido-select:focus {
+  outline: none;
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* ── 요약 섹션 ── */
+.summary-section {
+  max-width: 900px;
+  margin: 20px auto 0;
+  padding: 0 16px;
+  width: 100%;
+}
+
+/* 요약 카드 전체 박스 */
+.summary-card {
+  background: var(--bg-summary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* 요약 개별 항목 */
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 120px;
+}
+
+/* 요약 항목 레이블 */
+.summary-label {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* 요약 수치 텍스트 */
+.summary-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* 평균 수치는 더 크게 */
+.summary-big {
+  font-size: 2rem;
+  color: #1d4ed8;
+  line-height: 1;
+}
+
+/* 단위 텍스트 */
+.summary-unit {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* 구분선 */
+.summary-divider {
+  width: 1px;
+  height: 48px;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+/* ── 로딩 스피너 ── */
+.loading-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+  gap: 14px;
+}
+
+/* CSS 애니메이션 스피너 원 */
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* 스피너 회전 애니메이션 */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 로딩 중 안내 문구 */
+.loading-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* ── 에러 박스 ── */
+.error-box {
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 14px 20px;
+  background: #fee2e2;
+  border: 1px solid #ef4444;
+  border-radius: 8px;
+  color: #7f1d1d;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ── 카드 그리드 레이아웃 ── */
+.card-grid {
+  display: grid;
+  /* 최소 240px, 최대 1fr로 자동 채움 → 반응형 */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  max-width: 1200px;
+  margin: 20px auto 32px;
+  padding: 0 16px;
+  width: 100%;
+}
+
+/* ── 개별 측정소 카드 ── */
+.station-card {
+  border-radius: var(--radius);
+  border-left: 5px solid;
+  padding: 18px 16px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 카드 호버 효과 */
+.station-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.13);
+}
+
+/* 등급별 카드 색상 클래스 */
+.card-grade-1 {
+  background-color: var(--color-grade1-bg);
+  border-color: var(--color-grade1-bd);
+  color: var(--color-grade1-text);
+}
+
+.card-grade-2 {
+  background-color: var(--color-grade2-bg);
+  border-color: var(--color-grade2-bd);
+  color: var(--color-grade2-text);
+}
+
+.card-grade-3 {
+  background-color: var(--color-grade3-bg);
+  border-color: var(--color-grade3-bd);
+  color: var(--color-grade3-text);
+}
+
+.card-grade-4 {
+  background-color: var(--color-grade4-bg);
+  border-color: var(--color-grade4-bd);
+  color: var(--color-grade4-text);
+}
+
+/* 등급 없음: 회색 */
+.card-grade-none {
+  background-color: var(--color-none-bg);
+  border-color: var(--color-none-bd);
+  color: var(--color-none-text);
+}
+
+/* 카드 측정소 이름 */
+.card-station-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* 등급 배지 */
+.card-grade-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: fit-content;
+}
+
+/* 카드 데이터 행 */
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  padding-top: 6px;
+}
+
+/* 카드 항목 레이블 */
+.card-row-label {
+  opacity: 0.75;
+  font-weight: 500;
+}
+
+/* 카드 항목 수치 */
+.card-row-value {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* 측정 시각은 작게 표시 */
+.card-time {
+  font-size: 0.75rem;
+  opacity: 0.65;
+  text-align: right;
+  margin-top: 2px;
+}
+
+/* ── 푸터 ── */
+.site-footer {
+  text-align: center;
+  padding: 20px 16px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  border-top: 1px solid #e5e7eb;
+  margin-top: auto;
+  background-color: #ffffff;
+  line-height: 1.8;
+}
+
+/* 푸터 부가 설명 줄 */
+.footer-sub {
+  margin-top: 4px;
+  font-size: 0.72rem;
+  opacity: 0.75;
+}
+
+/* 푸터 링크 */
+.site-footer a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ── 반응형: 태블릿 이하 ── */
+@media (max-width: 768px) {
+  /* 요약 카드를 세로로 쌓기 */
+  .summary-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  /* 구분선을 가로 방향으로 변경 */
+  .summary-divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  /* 요약 항목 좌우 정렬로 변경 */
+  .summary-item {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: unset;
+  }
+
+  /* 모바일에서 큰 숫자 크기 조정 */
+  .summary-big {
+    font-size: 1.5rem;
+  }
+}
+
+/* ── 반응형: 소형 모바일 ── */
+@media (max-width: 400px) {
+  /* 카드 그리드 1열로 고정 */
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
